@@ -1,0 +1,13 @@
+﻿@page "/settings"
+
+<MudContainer>
+
+	<MudCard>
+		<MudCardContent>
+			<MudText Typo="Typo.h5" Class="mb-4">Settings</MudText>
+			<MudTextField T="string" @ref="TokenField" Variant="Variant.Text" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon=" @PasswordInputIcon" OnAdornmentClick="ToggleVisibility" AdornmentAriaLabel="Show Password" Label="Azure DevOps Token" />
+			<MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" OnClick="@SaveToken">Save</MudButton>
+		</MudCardContent>
+	</MudCard>
+</MudContainer>
+

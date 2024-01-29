@@ -1,0 +1,21 @@
+﻿<h3>ListApis</h3>
+
+
+<MudTable Items="@this.ApiBuilds" Hover="true" Breakpoint="Breakpoint.Sm">
+  <HeaderContent>
+    <MudTh>Name</MudTh>
+    <MudTh>Folder</MudTh>
+    <MudTh>Id</MudTh>
+    <MudTh>Url</MudTh>
+  </HeaderContent>
+  <RowTemplate>
+    <MudTd DataLabel="Name">@context.Name</MudTd>
+    <MudTd DataLabel="Folder">@context.Folder</MudTd>
+    <MudTd DataLabel="Id">@context.Id</MudTd>
+    <MudTd DataLabel="Url">
+      <MudLink OnClick="(t) => OpenBuildStatus(context.Url.ToString())">
+        @context.Url
+      </MudLink>
+    </MudTd>
+  </RowTemplate>
+</MudTable>

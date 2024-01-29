@@ -11,10 +11,10 @@ public class SimpleCredentialManager
 
 
 
-	public ICredential? GetCredential(string key)
+	public ICredential? GetCredential(WindowsCredEnum key)
 	{
-		var userName = _crypto.Encrypt(key);
-		var credentials = CredentialManager.EnumerateICredentials(TARGET);
+		var userName = _crypto.Encrypt(key.AsString());
+		var credentials = CredentialManager.EnumerateICredentials();
 		var credential = credentials.Find(c => c.UserName == userName);
 		if (credential is null)
 		{
@@ -26,12 +26,12 @@ public class SimpleCredentialManager
 		return credential;
 	}
 
-	public ICredential SaveCredential(string key, string value)
+	public ICredential SaveCredential(WindowsCredEnum key, string value)
 	{
-		var userName = _crypto.Encrypt(key);
+		var userName = _crypto.Encrypt(key.AsString());
 		var password = _crypto.Encrypt(value);
 
-		return CredentialManager.SaveCredentials(TARGET, new NetworkCredential(userName, password));
+		return CredentialManager.SaveCredentials($"{TARGET}", new NetworkCredential(userName, password));
 	}
 
 }

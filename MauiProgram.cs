@@ -3,6 +3,7 @@
 using MudBlazor;
 using MudBlazor.Services;
 
+using ProjectDoxen.Logic;
 using ProjectDoxen.Manager;
 
 namespace ProjectDoxen;
@@ -25,6 +26,8 @@ public static class MauiProgram
     builder.Services.AddMudServices();
     builder.Services.AddSingleton<CryptoService>();
     builder.Services.AddSingleton<SimpleCredentialManager>();
+    builder.Services.AddTransient<AzureService>();
+    builder.Services.AddTransient<HttpClient>();
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
